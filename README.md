@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/screen_active1.png" width="240" alt="Garmigotchi pet on a Garmin fenix 7">
+  <img src="assets/screen_active5.png" width="240" alt="Garmigotchi pet with a live activity panel on a Garmin watch">
 </p>
 
 <p align="center">
@@ -22,7 +22,7 @@
 
 <table>
   <tr>
-    <td align="center"><img src="assets/screen_active1.png" width="200"><br><b>Pet</b><br><sub>Your pet, centered in a day/night world</sub></td>
+    <td align="center"><img src="assets/screen_active5.png" width="200"><br><b>Pet</b><br><sub>Your pet + a live activity panel (steps / HR / happy)</sub></td>
     <td align="center"><img src="assets/screen_active2.png" width="200"><br><b>Stats</b><br><sub>Five labeled needs, generation &amp; age</sub></td>
   </tr>
   <tr>

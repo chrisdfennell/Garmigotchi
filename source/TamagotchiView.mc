@@ -170,30 +170,8 @@ class TamagotchiView extends WatchUi.View {
         if (animType != null) {
             return;
         }
-        if (screen == SCREEN_STATS) {
-            showPet();
-            return;
-        }
-        if (inCareButton(x, y)) {
-            primaryAction();
-        } else {
-            toggleScreen();
-        }
-    }
-
-    function inCareButton(x as Number, y as Number) as Boolean {
-        var ds = System.getDeviceSettings();
-        var w = ds.screenWidth;
-        var h = ds.screenHeight;
-        var small = (minNum(w, h) < 218);
-        var sb = h - (small ? 18 : 30);
-        var pillW = minNum(w - 118, 104);
-        var pillY = sb - 20;
-        var left = (w / 2) - (pillW / 2) - 12;
-        var right = (w / 2) + (pillW / 2) + 12;
-        var topY = pillY - 12;
-        var botY = pillY + 36;
-        return (x >= left && x <= right && y >= topY && y <= botY);
+        // Care is on the START button; a tap flips between Pet and Stats.
+        toggleScreen();
     }
 
     // The primary (START/tap) action. Handles the contextual cases directly and
@@ -386,17 +364,21 @@ class TamagotchiView extends WatchUi.View {
 
     function drawPetScreen(dc as Dc) as Void {
         var w = dc.getWidth();
+        var h = dc.getHeight();
         var top = safeTop(dc);
         var sprite = bitmapForState();
+        var panelTop = (h * 60) / 100;
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(w / 2, top, Graphics.FONT_SMALL, pet.name + " - " + stageName() + pet.formSymbol(), Graphics.TEXT_JUSTIFY_CENTER);
 
-        // Centre the pet in the open space between the title and the button so
-        // nothing overlaps. The current need/message lives on the stats page.
+        // Anchor the pet so its feet rest just above the info panel.
         var titleBottom = top + dc.getFontHeight(Graphics.FONT_SMALL);
-        var buttonY = safeBottom(dc) - 20;
-        var cy = (titleBottom + buttonY) / 2;
+        var bh = (sprite != null) ? sprite.getHeight() : 96;
+        var cy = panelTop - 6 - (bh / 2);
+        if (cy < titleBottom + (bh / 2)) {
+            cy = titleBottom + (bh / 2);
+        }
         var bob;
         if (pet.isSleeping()) {
             bob = 0;
@@ -408,21 +390,103 @@ class TamagotchiView extends WatchUi.View {
         drawCenteredBitmap(dc, sprite, w / 2, cy + bob);
 
         if (pet.alive && pet.stage == STAGE_ADULT && pet.form != FORM_NEUTRAL) {
-            drawFormAccessory(dc, w / 2, cy - 58 + bob);
+            drawFormAccessory(dc, w / 2, cy - (bh / 2) + 8 + bob);
         }
-
-        if (pet.poopCount > 0) {
-            drawPoops(dc, w, dc.getHeight());
-        }
-
         if (pet.isSleeping()) {
             dc.setColor(0xCFE8FF, Graphics.COLOR_TRANSPARENT);
             dc.drawText(w / 2 + 34, cy - 30, Graphics.FONT_TINY, "z", Graphics.TEXT_JUSTIFY_LEFT);
             dc.drawText(w / 2 + 44, cy - 44, Graphics.FONT_SMALL, "Z", Graphics.TEXT_JUSTIFY_LEFT);
         }
 
-        drawActionBar(dc);
-        drawPageHint(dc, "Stats");
+        // Bottom info panel, or a contextual prompt for egg / death.
+        if (!pet.alive) {
+            drawPromptPanel(dc, w, h, panelTop, "Press START", "for a new egg");
+        } else if (pet.stage == STAGE_EGG) {
+            drawPromptPanel(dc, w, h, panelTop, "Press START", "to hatch!");
+        } else {
+            drawActivityPanel(dc, w, h, panelTop);
+            if (pet.poopCount > 0) {
+                drawPoops(dc, w, panelTop + 6);
+            }
+        }
+    }
+
+    // Live activity readout (steps / heart rate / happiness) along the bottom.
+    function drawActivityPanel(dc as Dc, w as Number, h as Number, panelTop as Number) as Void {
+        var panelH = h - panelTop;
+        dc.setColor(0x3E8E3A, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(0, panelTop, w, panelH);
+        dc.setColor(0x5FBE53, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(0, panelTop, w, 3);
+
+        var steps = pet.readSteps();
+        var hr = pet.readHeartRate();
+        var hrText = (hr != null && hr > 0) ? (hr.format("%d") + " bpm") : "--";
+
+        var iconX = (w / 2) - 52;
+        var textX = (w / 2) - 36;
+        var rowGap = panelH / 4;
+        var r1 = panelTop + rowGap;
+        var r2 = panelTop + rowGap * 2;
+        var r3 = panelTop + rowGap * 3;
+
+        drawFeetIcon(dc, iconX, r1);
+        drawHeartIcon(dc, iconX, r2);
+        drawStarIcon(dc, iconX, r3);
+
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(textX, r1, Graphics.FONT_TINY, "STEPS: " + commafy(steps), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(textX, r2, Graphics.FONT_TINY, "HR: " + hrText, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(textX, r3, Graphics.FONT_TINY, "HAPPY: " + pet.happiness.toNumber().format("%d") + "%", Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+    }
+
+    function drawPromptPanel(dc as Dc, w as Number, h as Number, panelTop as Number, line1 as String, line2 as String) as Void {
+        dc.setColor(0x3E8E3A, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(0, panelTop, w, h - panelTop);
+        dc.setColor(0x5FBE53, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(0, panelTop, w, 3);
+        var midY = panelTop + (h - panelTop) / 2;
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, midY - 11, Graphics.FONT_TINY, line1, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(w / 2, midY + 11, Graphics.FONT_TINY, line2, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+    }
+
+    function drawFeetIcon(dc as Dc, cx as Number, cy as Number) as Void {
+        dc.setColor(0x9FD8FF, Graphics.COLOR_TRANSPARENT);
+        dc.fillRoundedRectangle(cx - 5, cy - 5, 4, 7, 2);
+        dc.fillCircle(cx - 3, cy - 5, 2);
+        dc.fillRoundedRectangle(cx + 1, cy - 1, 4, 7, 2);
+        dc.fillCircle(cx + 3, cy - 1, 2);
+    }
+
+    function drawHeartIcon(dc as Dc, cx as Number, cy as Number) as Void {
+        dc.setColor(0xDA3741, Graphics.COLOR_TRANSPARENT);
+        dc.fillCircle(cx - 3, cy - 2, 3);
+        dc.fillCircle(cx + 3, cy - 2, 3);
+        dc.fillPolygon([[cx - 6, cy - 1], [cx + 6, cy - 1], [cx, cy + 6]]);
+    }
+
+    function drawStarIcon(dc as Dc, cx as Number, cy as Number) as Void {
+        dc.setColor(0xFFD23F, Graphics.COLOR_TRANSPARENT);
+        dc.fillPolygon([
+            [cx, cy - 6], [cx + 2, cy - 2], [cx + 6, cy - 2], [cx + 3, cy + 1],
+            [cx + 4, cy + 5], [cx, cy + 3], [cx - 4, cy + 5], [cx - 3, cy + 1],
+            [cx - 6, cy - 2], [cx - 2, cy - 2]
+        ]);
+    }
+
+    function commafy(n as Number) as String {
+        var s = n.format("%d");
+        var out = "";
+        var count = 0;
+        for (var i = s.length() - 1; i >= 0; i--) {
+            out = s.substring(i, i + 1) + out;
+            count += 1;
+            if (count % 3 == 0 && i > 0) {
+                out = "," + out;
+            }
+        }
+        return out;
     }
 
     function drawHelp(dc as Dc) as Void {
@@ -433,8 +497,8 @@ class TamagotchiView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(w / 2, top, Graphics.FONT_SMALL, "Controls", Graphics.TEXT_JUSTIFY_CENTER);
 
-        drawHelpLine(dc, top + 44, "UP/DOWN: stats");
-        drawHelpLine(dc, top + 70, "START: care");
+        drawHelpLine(dc, top + 44, "START: care");
+        drawHelpLine(dc, top + 70, "TAP / UP / DOWN: stats");
         drawHelpLine(dc, top + 96, "MENU: settings");
         drawHelpLine(dc, top + 122, "BACK: exit");
         drawPill(dc, w / 2, bottom - 20, "Got it");
@@ -714,9 +778,8 @@ class TamagotchiView extends WatchUi.View {
     }
 
     // Poop piles on the ground until the pet is cleaned.
-    function drawPoops(dc as Dc, w as Number, h as Number) as Void {
-        var offs = [-72, 72, -46, 46];
-        var groundY = (h * 72) / 100 + 16;
+    function drawPoops(dc as Dc, w as Number, groundY as Number) as Void {
+        var offs = [-80, 80, -56, 56];
         var n = pet.poopCount;
         if (n > 4) { n = 4; }
         for (var i = 0; i < n; i++) {
@@ -804,22 +867,6 @@ class TamagotchiView extends WatchUi.View {
         dc.drawText(baseX, baseY - animStep * 3, Graphics.FONT_SMALL, "Z", Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(baseX + 14, baseY - 12 - animStep * 4, Graphics.FONT_TINY, "Z", Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(baseX + 24, baseY - 22 - animStep * 5, Graphics.FONT_XTINY, "Z", Graphics.TEXT_JUSTIFY_LEFT);
-    }
-
-    function drawActionBar(dc as Dc) as Void {
-        var w = dc.getWidth();
-        var label;
-        if (!pet.alive) {
-            label = "Legacy";
-        } else if (pet.stage == STAGE_EGG) {
-            label = "Hatch";
-        } else if (pet.isSleeping()) {
-            label = "Wake";
-        } else {
-            label = "Care";
-        }
-        var bottom = safeBottom(dc);
-        drawPill(dc, w / 2, bottom - 20, label);
     }
 
     function drawPill(dc as Dc, cx as Number, y as Number, label as String) as Void {
