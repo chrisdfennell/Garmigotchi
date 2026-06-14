@@ -7,6 +7,18 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-06-14
+
+### Added
+- A live **activity panel** on the main pet screen showing daily **steps**,
+  **heart rate**, and the pet's **happiness**, with icons.
+
+### Changed
+- The pet now stands on the activity panel; egg and death states show a
+  "Press START" prompt in its place.
+- Care now opens from the **START** button only; tapping the screen flips to the
+  Stats page. Help text updated to match.
+
 ## [1.0.1] - 2026-06-14
 
 ### Added
@@ -40,6 +52,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
   including time spent asleep, with persistent state across launches.
 - Touch routing: Care opens only from the button; tapping elsewhere opens Stats.
 
-[Unreleased]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/chrisdfennell/Garmigotchi/releases/tag/v1.0.0
