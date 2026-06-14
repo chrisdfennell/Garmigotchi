@@ -7,6 +7,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-06-14
+
+### Fixed
+- The pet no longer **floats above** the bottom panel — its feet now rest on the
+  panel (the sprite's transparent foot padding is accounted for).
+
 ## [1.2.0] - 2026-06-14
 
 ### Added
@@ -70,7 +76,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
   including time spent asleep, with persistent state across launches.
 - Touch routing: Care opens only from the button; tapping elsewhere opens Stats.
 
-[Unreleased]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.0...v1.0.1

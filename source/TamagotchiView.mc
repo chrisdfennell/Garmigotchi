@@ -416,7 +416,10 @@ class TamagotchiView extends WatchUi.View {
     // on screen (the title is drawn over it with an outline for readability).
     function petAnchorY(h as Number, bh as Number) as Number {
         var panelTop = (h * 60) / 100;
-        var cy = panelTop - 4 - (bh / 2);
+        // The sprite has transparent space below the feet (the feet sit ~87% of
+        // the way down), so sink it until the feet rest on the panel instead of
+        // floating above it.
+        var cy = panelTop + 2 - ((bh * 37) / 100);
         var minCy = (bh / 2) + 2;
         if (cy < minCy) {
             cy = minCy;
