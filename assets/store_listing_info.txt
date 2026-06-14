@@ -17,11 +17,12 @@ Adopt one of five pixel-art animals, watch it grow from an egg into a full-grown
 
 Key Features:
 - Five adoptable pets, each with its own art: Cat, Dog, Dragon, Penguin, and Fox.
+- Name your pet: pick from a set of names when you adopt it, rename it any time, or type a custom name from the Garmin Connect app.
 - Four life stages: your pet grows from Egg to Baby to Teen to Adult over time.
 - Expressive moods - it looks happy, sad, sleepy, or sick depending on how it feels, and breathes gently when idle.
 - Five needs to balance, each with its own icon: Hunger, Happiness, Energy, Health, and Cleanliness.
 - Feed it - and every animal eats its own favorite food (the cat gets a fish, the dog a bone, the fox berries...), nibbled away one bite at a time.
-- Play a quick "catch the ball" mini-game; the better your timing, the happier your pet.
+- Play quick mini-games - Play picks one at random from several (catch the ball, a reaction test, a button masher); the better you do, the happier your pet.
 - Clean up after it - poop piles up over time and must be cleaned before it makes a mess.
 - Sleep - tuck your pet in for a multi-hour nap, and it even dozes off on its own at night.
 - Medicine - nurse your pet back to health when it gets sick.
@@ -32,13 +33,13 @@ Key Features:
 - A live activity panel on the main screen showing your daily steps, heart rate, and your pet's happiness at a glance.
 - Glance support for an at-a-glance status check from your widget carousel.
 - A watch-face complication so your pet's wellbeing can show on your favorite watch face.
-- Simple, touch- and button-friendly controls, plus a settings menu to toggle vibration, change pets, or start over.
+- Simple, touch- and button-friendly controls, plus a settings menu to toggle vibration, rename or change your pet, or start over.
 - Your pet's state is saved between sessions and keeps living while the app is closed - check back later and see how it's doing.
 
 How to Play:
-- Open the app and choose your pet, then press START to hatch the egg.
+- Open the app, choose your pet, and give it a name, then press START to hatch the egg.
 - The main screen shows your pet standing above a live panel with your daily steps, heart rate, and your pet's happiness.
-- Care for your pet: press the START button to open the Care menu. Choose an action - Feed, Play, Clean, Sleep, Medicine, or Discipline - and it happens right away.
+- Care for your pet: press the START button to open the Care menu. Choose an action - Feed, Play, Clean, Sleep, Medicine, or Discipline - and it happens right away. Play launches a random mini-game.
 - Check the stats: tap the screen (or press the UP/DOWN buttons) to flip to the Stats page. It shows all five needs, your pet's age, and its generation. Tap again to go back to your pet.
 - Keep the needs up. When Hunger, Happiness, Energy, Health, or Cleanliness runs low, your pet gets unhappy - feed it, play with it, clean up after it, and let it sleep. Move around during the day, too: your steps and heart rate help feed and energize it.
 - Let it rest. Choose Sleep for a multi-hour nap (it also falls asleep on its own at night). Press START to wake it early.
@@ -50,9 +51,9 @@ How to Play:
 FIELD: What's New in this Version (Max 8000 characters)
 ------------------------------------------------------------------------
 Initial Release:
-- Adopt and raise one of five pixel-art pets (Cat, Dog, Dragon, Penguin, Fox).
+- Adopt, name, and raise one of five pixel-art pets (Cat, Dog, Dragon, Penguin, Fox).
 - Egg-to-adult growth with happy, sad, sleepy, and sick moods.
-- Full care loop: Feed, Play (mini-game), Clean, Sleep, and Medicine.
+- Full care loop: Feed, Play (random mini-games), Clean, Sleep, and Medicine.
 - Per-animal foods and animated care actions.
 - Poop-and-clean-up mechanic and sickness with a cure.
 - Multi-hour sleep with slower decay, plus automatic sleep at night.

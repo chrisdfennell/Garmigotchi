@@ -40,11 +40,12 @@
 - **Grows up** through four life stages: **Egg → Baby → Teen → Adult**.
 - **Expressive moods** — idle, happy, sad, sleepy, and sick poses (plus a ghost if neglected too long).
 - **Breathes and bobs** when idle so it always feels alive.
+- **Name your pet** — pick from a preset list when you adopt, **Rename** any time in Settings, or type a **custom name** in the Garmin Connect app.
 
 ### 🍽️ Care loop
 - **Five needs** to balance, each with its own icon: 🍴 Hunger · ❤️ Happiness · ⚡ Energy · ✚ Health · 💧 Cleanliness.
 - **Feed** — and each animal eats its **own food** (the cat gets a fish, the dog a bone, the dragon a drumstick, the fox berries…), nibbled away **one bite at a time**.
-- **Play** — a quick **catch-the-ball mini-game**; the better your score, the happier your pet.
+- **Play** — launches a **random mini-game** (catch-the-ball, a reaction test, or a button masher); the better you do, the happier your pet.
 - **Clean** — poop piles up over time and drags down cleanliness until you hose it off. 🚿
 - **Sleep** — tuck it in for a multi-hour nap (it also **dozes off on its own at night**).
 - **Medicine** — cure your pet when it gets sick.
@@ -74,13 +75,13 @@ Every care action plays a little hand-drawn flourish — a burger/fish eaten bit
 
 | Input | Pet page | Stats page |
 |---|---|---|
-| **START** / tap the **Care** button | Open the Care menu (or Hatch / Wake / Legacy) | — |
-| **Tap** elsewhere on screen | Go to the **Stats** page | Back to the **Pet** page |
+| **START** | Open the Care menu (or Hatch / Wake / Legacy) | Back to the **Pet** page |
+| **Tap** the screen | Go to the **Stats** page | Back to the **Pet** page |
 | **Up / Down** (or swipe) | Flip between Pet ↔ Stats | Flip between Pet ↔ Stats |
 | **MENU** (long-press Up) | Open **Settings** | Open **Settings** |
 | **BACK** | Exit | Exit |
 
-> 💡 Care only opens from the **button** — tapping the pet takes you straight to the Stats page.
+> 💡 Care opens only from the **START button** — a tap takes you straight to the Stats page.
 
 **Settings** (long-press MENU): toggle vibration, change pet, or reset the game.
 
@@ -135,13 +136,15 @@ source/
   TamagotchiGlanceView.mc     Glance (carousel) summary
   Pet.mc                      Stats, stages, moods, sleep, poop, aging, legacy
   CareMenu.mc                 The Care action menu
-  PlayGame.mc                 Catch-the-ball mini-game
-  SettingsMenu.mc             Settings menu (vibration / change pet / reset)
+  PlayGame.mc                 Play mini-games (catch / reaction / masher) + launcher
+  NameMenu.mc                 Pet name picker
+  SettingsMenu.mc             Settings menu (vibration / rename / change pet / reset)
   PetComplication.mc          Publishes pet wellbeing as a complication
   StorageManager.mc           Persistence
 resources/
   drawables/ images/          Pixel-art sprites & icons
   complications/              Complication definition
+  settings/                   Custom pet-name setting (Garmin Connect app)
   strings/ layouts/           Strings and layouts
 tools/
   generate_pixel_pet_pack.py  Generates the pixel-pet art packs
