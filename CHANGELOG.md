@@ -7,6 +7,11 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ## [Unreleased]
 
+### Added
+- Support for the **fenix 8 family** (`fenix843mm`, `fenix847mm`, `fenix8pro47mm`,
+  `fenix8solar47mm`, `fenix8solar51mm`), which also covers the matching
+  **tactix 8 / quatix 8** models. Verified on the 280×280 MIP Solar panel.
+
 ## [1.0.0] - 2026-06-14
 
 ### Added

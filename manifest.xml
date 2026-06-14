@@ -20,6 +20,14 @@
             <iq:product id="fenix7"/>
             <iq:product id="fenix7pro"/>
             <iq:product id="epix2"/>
+
+            <!-- fenix 8 family (also covers tactix 8 / quatix 8 of the same size).
+                 The Solar models are MIP: fenix8solar51mm is 280x280, 47mm is 260x260. -->
+            <iq:product id="fenix843mm"/>
+            <iq:product id="fenix847mm"/>
+            <iq:product id="fenix8pro47mm"/>
+            <iq:product id="fenix8solar47mm"/>
+            <iq:product id="fenix8solar51mm"/>
         </iq:products>
 
         <iq:permissions>

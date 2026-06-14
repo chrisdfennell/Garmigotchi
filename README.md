@@ -112,7 +112,7 @@ connectiq
 monkeydo bin/Garmigotchi.prg fenix7
 ```
 
-**Supported devices:** `fr255`, `fr265`, `fr955`, `fr965`, `venu2`, `venu3`, `fenix7`, `fenix7pro`, `epix2`.
+**Supported devices:** `fr255`, `fr265`, `fr955`, `fr965`, `venu2`, `venu3`, `fenix7`, `fenix7pro`, `epix2`, and the **fenix 8 family** — `fenix843mm`, `fenix847mm`, `fenix8pro47mm`, `fenix8solar47mm`, `fenix8solar51mm` (these also cover the matching **tactix 8 / quatix 8** models). Both AMOLED and **MIP** (transflective) screens are supported, from 218×218 up to 454×454.
 > ⚠️ The watch-face complication needs **API 4.2.0+**; a couple of older targets may need it guarded or removed before a store release.
 
 ### 📷 Capturing screenshots
