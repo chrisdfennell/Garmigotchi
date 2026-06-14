@@ -129,7 +129,12 @@ class TamagotchiView extends WatchUi.View {
         StorageManager.savePet(pet);
         PetComplication.publish(pet);
         choosingPet = false;
-        showingHelp = true;
+        WatchUi.pushView(buildNameMenu(pet), new NameMenuDelegate(self), WatchUi.SLIDE_UP);
+    }
+
+    // Called when the name picker closes (after adopting or renaming).
+    function afterNaming() as Void {
+        showingHelp = !StorageManager.hasSeenHelp();
         WatchUi.requestUpdate();
     }
 
@@ -369,16 +374,9 @@ class TamagotchiView extends WatchUi.View {
         var sprite = bitmapForState();
         var panelTop = (h * 60) / 100;
 
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w / 2, top, Graphics.FONT_SMALL, pet.name + " - " + stageName() + pet.formSymbol(), Graphics.TEXT_JUSTIFY_CENTER);
-
         // Anchor the pet so its feet rest just above the info panel.
-        var titleBottom = top + dc.getFontHeight(Graphics.FONT_SMALL);
         var bh = (sprite != null) ? sprite.getHeight() : 96;
-        var cy = panelTop - 6 - (bh / 2);
-        if (cy < titleBottom + (bh / 2)) {
-            cy = titleBottom + (bh / 2);
-        }
+        var cy = petAnchorY(h, bh);
         var bob;
         if (pet.isSleeping()) {
             bob = 0;
@@ -409,6 +407,37 @@ class TamagotchiView extends WatchUi.View {
                 drawPoops(dc, w, panelTop + 6);
             }
         }
+
+        // Title last, on top of the pet's head, with a black outline.
+        drawOutlinedTitle(dc, w / 2, top, pet.name + " - " + stageName() + pet.formSymbol());
+    }
+
+    // Feet rest just above the bottom info panel; clamp only so the head stays
+    // on screen (the title is drawn over it with an outline for readability).
+    function petAnchorY(h as Number, bh as Number) as Number {
+        var panelTop = (h * 60) / 100;
+        var cy = panelTop - 4 - (bh / 2);
+        var minCy = (bh / 2) + 2;
+        if (cy < minCy) {
+            cy = minCy;
+        }
+        return cy;
+    }
+
+    // White text with a 1px black outline (8 directions), for legibility over
+    // the pet and the sky.
+    function drawOutlinedTitle(dc as Dc, cx as Number, y as Number, text as String) as Void {
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx - 1, y - 1, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx + 1, y - 1, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx - 1, y + 1, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx + 1, y + 1, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx - 1, y, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx + 1, y, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, y - 1, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, y + 1, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, y, Graphics.FONT_SMALL, text, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
     // Live activity readout (steps / heart rate / happiness) along the bottom.
@@ -531,8 +560,7 @@ class TamagotchiView extends WatchUi.View {
     function drawStatsScreen(dc as Dc) as Void {
         var w = dc.getWidth();
         var top = safeTop(dc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w / 2, top, Graphics.FONT_SMALL, pet.name + " - " + stageName() + pet.formSymbol(), Graphics.TEXT_JUSTIFY_CENTER);
+        drawOutlinedTitle(dc, w / 2, top, pet.name + " - " + stageName() + pet.formSymbol());
 
         var iconSize = 9;
         var pad = 6;
@@ -627,10 +655,8 @@ class TamagotchiView extends WatchUi.View {
 
     function drawActionAnim(dc as Dc) as Void {
         var w = dc.getWidth();
+        var h = dc.getHeight();
         var top = safeTop(dc);
-
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w / 2, top, Graphics.FONT_SMALL, pet.name + " - " + stageName() + pet.formSymbol(), Graphics.TEXT_JUSTIFY_CENTER);
 
         var sprite;
         if ((animType == :feed || animType == :play) && pet.alive && pet.stage != STAGE_EGG && pet.stage != STAGE_BABY) {
@@ -638,10 +664,11 @@ class TamagotchiView extends WatchUi.View {
         } else {
             sprite = bitmapForState();
         }
-        var titleBottom = top + dc.getFontHeight(Graphics.FONT_SMALL);
-        var buttonY = safeBottom(dc) - 20;
-        var cy = (titleBottom + buttonY) / 2;
+        var bh = (sprite != null) ? sprite.getHeight() : 96;
+        var cy = petAnchorY(h, bh);
         drawCenteredBitmap(dc, sprite, w / 2, cy);
+
+        drawOutlinedTitle(dc, w / 2, top, pet.name + " - " + stageName() + pet.formSymbol());
 
         if (animType == :feed) {
             drawFeedAnim(dc, w / 2, cy);

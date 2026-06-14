@@ -10,6 +10,16 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 ### Added
 - Two more Play mini-games — a **reaction test** and a **button masher** — and
   **Play now picks one at random** each time, so it stays fresh.
+- **Name your pet** from a preset list when you first adopt it (the name shows at
+  the top), plus a **Rename** option in Settings.
+
+### Changed
+- The pet name/title now has a **black outline** so it reads clearly over the pet
+  and sky.
+
+### Fixed
+- The pet is no longer pushed **behind the bottom panel** (e.g. after cleaning) —
+  it now stands correctly on the panel.
 
 ## [1.1.0] - 2026-06-14
 

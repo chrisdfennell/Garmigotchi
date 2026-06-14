@@ -10,6 +10,7 @@ function buildSettingsMenu() as WatchUi.Menu2 {
         :vibes,
         StorageManager.vibesEnabled(),
         null));
+    menu.addItem(new WatchUi.MenuItem("Rename", "Pick a new name", :rename, null));
     menu.addItem(new WatchUi.MenuItem("Change Pet", "New friend", :changePet, null));
     menu.addItem(new WatchUi.MenuItem("Reset Game", "Start over", :reset, null));
     return menu;
@@ -27,6 +28,9 @@ class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
         var id = item.getId();
         if (id == :vibes) {
             StorageManager.setVibes((item as WatchUi.ToggleMenuItem).isEnabled());
+        } else if (id == :rename) {
+            WatchUi.popView(WatchUi.SLIDE_DOWN);
+            WatchUi.pushView(buildNameMenu(mainView.pet), new NameMenuDelegate(mainView), WatchUi.SLIDE_UP);
         } else if (id == :changePet) {
             WatchUi.popView(WatchUi.SLIDE_DOWN);
             WatchUi.pushView(
