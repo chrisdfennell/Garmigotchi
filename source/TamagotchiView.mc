@@ -423,8 +423,8 @@ class TamagotchiView extends WatchUi.View {
         var hr = pet.readHeartRate();
         var hrText = (hr != null && hr > 0) ? (hr.format("%d") + " bpm") : "--";
 
-        var iconX = (w / 2) - 52;
-        var textX = (w / 2) - 36;
+        var iconX = (w / 2) - 66;
+        var textX = (w / 2) - 50;
         var rowGap = panelH / 4;
         var r1 = panelTop + rowGap;
         var r2 = panelTop + rowGap * 2;
