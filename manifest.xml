@@ -5,7 +5,7 @@
         id="7f4d0d9f-72d6-4c3f-9d5b-4f0e90c1d3a1"
         type="watch-app"
         name="@Strings.AppName"
-        entry="TamagotchiApp"
+        entry="TamawatchiApp"
         launcherIcon="@Drawables.LauncherIcon"
         minSdkVersion="4.0.0">
 

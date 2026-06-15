@@ -1,17 +1,17 @@
 ========================================================================
-GARMIN CONNECT IQ STORE LISTING INFO - GARMIGOTCHI VIRTUAL PET
+GARMIN CONNECT IQ STORE LISTING INFO - TAMAWATCHI VIRTUAL PET
 ========================================================================
 
 ------------------------------------------------------------------------
 FIELD: Title (Max 30 characters)
 ------------------------------------------------------------------------
-Garmigotchi - Virtual Pet
+Tamawatchi - Virtual Pet
 
 
 ------------------------------------------------------------------------
 FIELD: Description (Max 4000 characters)
 ------------------------------------------------------------------------
-Garmigotchi is a Tamagotchi-style virtual pet that lives right on your Garmin watch. Hatch an egg, raise your little companion, and keep it happy, fed, and healthy - all powered by your real-world activity. The more you move, the better your pet thrives.
+Tamawatchi is a Tamagotchi-style virtual pet that lives right on your Garmin watch. Hatch an egg, raise your little companion, and keep it happy, fed, and healthy - all powered by your real-world activity. The more you move, the better your pet thrives.
 
 Adopt one of five pixel-art animals, watch it grow from an egg into a full-grown adult, and discover what it becomes based on how well you care for it. Every visit is a quick, charming check-in: feed it, play a mini-game, clean up, or tuck it in for the night.
 

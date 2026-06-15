@@ -8,7 +8,7 @@ import Toybox.Time;
 import Toybox.Timer;
 import Toybox.WatchUi;
 
-class TamagotchiView extends WatchUi.View {
+class TamawatchiView extends WatchUi.View {
     const SCREEN_PET = 0;
     const SCREEN_STATS = 1;
 
@@ -35,7 +35,7 @@ class TamagotchiView extends WatchUi.View {
     }
 
     function onShow() as Void {
-        System.println("Garmi-gotchi view onShow");
+        System.println("Tamawatchi view onShow");
         pet.updateFromClock();
         startTimer();
     }
@@ -1018,17 +1018,17 @@ class TamagotchiView extends WatchUi.View {
     }
 }
 
-class TamagotchiInputDelegate extends WatchUi.BehaviorDelegate {
-    var mainView as TamagotchiView;
+class TamawatchiInputDelegate extends WatchUi.BehaviorDelegate {
+    var mainView as TamawatchiView;
     var pet as Pet;
 
-    function initialize(viewRef as TamagotchiView, model as Pet) {
+    function initialize(viewRef as TamawatchiView, model as Pet) {
         BehaviorDelegate.initialize();
         mainView = viewRef;
         pet = model;
     }
 
-    function view() as TamagotchiView {
+    function view() as TamawatchiView {
         return mainView;
     }
 

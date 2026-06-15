@@ -18,7 +18,7 @@ jobs:
           set -e
           missing=0
           for f in manifest.xml monkey.jungle \
-                   source/TamagotchiApp.mc source/TamagotchiView.mc source/Pet.mc; do
+                   source/TamawatchiApp.mc source/TamawatchiView.mc source/Pet.mc; do
             if [ ! -f "$f" ]; then
               echo "::error::Missing required file: $f"
               missing=1

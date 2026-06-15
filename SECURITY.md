@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Garmigotchi is a Connect IQ watch app. Security fixes are applied to the latest
+Tamawatchi is a Connect IQ watch app. Security fixes are applied to the latest
 release on the `main` branch.
 
 ## Reporting a vulnerability
@@ -18,7 +18,7 @@ acknowledge your report and work on a fix as quickly as we reasonably can.
 
 ## Scope notes
 
-Garmigotchi runs entirely on the watch. It reads on-device sensor data (steps and
+Tamawatchi runs entirely on the watch. It reads on-device sensor data (steps and
 heart rate) to drive gameplay and stores its state with the Connect IQ
 `Application.Storage` API. It does **not** transmit personal or sensitive data off
 the device. The `developer_key.der` signing key is never committed to the

@@ -2,7 +2,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class TamagotchiGlanceView extends WatchUi.GlanceView {
+class TamawatchiGlanceView extends WatchUi.GlanceView {
     var pet as Pet;
 
     function initialize(model as Pet) {
@@ -25,7 +25,7 @@ class TamagotchiGlanceView extends WatchUi.GlanceView {
 
         // The system draws the app icon at the left of the glance, so keep all
         // text/bars clear of that zone. The title uses the largest font that
-        // still fits the available width (so "Garmi-gotchi" is never clipped),
+        // still fits the available width (so "Tamawatchi" is never clipped),
         // and the rows stack by real font height so nothing overlaps.
         var left = 50;
         var right = 6;
@@ -34,7 +34,7 @@ class TamagotchiGlanceView extends WatchUi.GlanceView {
             contentW = 160;
         }
 
-        var title = "Garmi-gotchi";
+        var title = "Tamawatchi";
         var titleFont = Graphics.FONT_XTINY;
         var candidates = [Graphics.FONT_SMALL, Graphics.FONT_TINY, Graphics.FONT_XTINY];
         for (var i = 0; i < candidates.size(); i++) {

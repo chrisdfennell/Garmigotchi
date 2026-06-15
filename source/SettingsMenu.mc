@@ -17,9 +17,9 @@ function buildSettingsMenu() as WatchUi.Menu2 {
 }
 
 class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
-    var mainView as TamagotchiView;
+    var mainView as TamawatchiView;
 
-    function initialize(view as TamagotchiView) {
+    function initialize(view as TamawatchiView) {
         Menu2InputDelegate.initialize();
         mainView = view;
     }
@@ -52,10 +52,10 @@ class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
 }
 
 class GameConfirmDelegate extends WatchUi.ConfirmationDelegate {
-    var mainView as TamagotchiView;
+    var mainView as TamawatchiView;
     var mode as Symbol;
 
-    function initialize(view as TamagotchiView, modeSym as Symbol) {
+    function initialize(view as TamawatchiView, modeSym as Symbol) {
         ConfirmationDelegate.initialize();
         mainView = view;
         mode = modeSym;

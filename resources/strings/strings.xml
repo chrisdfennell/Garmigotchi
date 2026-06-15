@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">Garmi-gotchi</string>
+    <string id="AppName">Tamawatchi</string>
     <string id="ChoosePet">Choose your pet</string>
     <string id="Feed">Feed</string>
     <string id="Play">Play</string>
@@ -10,7 +10,7 @@
 
     <string id="PetMoodLong">Pet Wellbeing</string>
     <string id="PetMoodShort">PET</string>
-    <string id="PetMoodName">Garmi Pet</string>
+    <string id="PetMoodName">Tama Pet</string>
 
     <string id="PetNameTitle">Pet Name (custom)</string>
 </strings>

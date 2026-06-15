@@ -53,7 +53,7 @@ jobs:
             -e \
             -f monkey.jungle \
             -y developer_key.der \
-            -o bin/Garmigotchi.iq
+            -o bin/Tamawatchi.iq
 
           # Side-loadable .prg for every supported product (see manifest.xml).
           for device in fr255 fr265 fr955 fr965 venu2 venu3 fenix7 fenix7pro epix2 \
@@ -62,15 +62,15 @@ jobs:
             java -jar /connectiq/bin/monkeybrains.jar \
               -f monkey.jungle \
               -y developer_key.der \
-              -o "bin/Garmigotchi_${device}.prg" \
+              -o "bin/Tamawatchi_${device}.prg" \
               -d "$device"
           done
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Garmigotchi ${{ github.ref_name }}
+          name: Tamawatchi ${{ github.ref_name }}
           generate_release_notes: true
           files: |
-            bin/Garmigotchi.iq
-            bin/Garmigotchi_*.prg
+            bin/Tamawatchi.iq
+            bin/Tamawatchi_*.prg

@@ -38,12 +38,12 @@ if ($keyPath -eq $null) {
 $junglePath = Join-Path $PSScriptRoot "monkey.jungle"
 
 if ($Export) {
-    $outputPath = Join-Path $binDir "GarmiGotchi.iq"
-    Write-Host "Packaging Garmi-gotchi for Connect IQ Store..." -ForegroundColor Cyan
+    $outputPath = Join-Path $binDir "Tamawatchi.iq"
+    Write-Host "Packaging Tamawatchi for Connect IQ Store..." -ForegroundColor Cyan
     & $monkeyc -e -f $junglePath -o $outputPath -y $keyPath
 } else {
-    $outputPath = Join-Path $binDir "GarmiGotchi.prg"
-    Write-Host "Building Garmi-gotchi for $Device..." -ForegroundColor Cyan
+    $outputPath = Join-Path $binDir "Tamawatchi.prg"
+    Write-Host "Building Tamawatchi for $Device..." -ForegroundColor Cyan
     & $monkeyc -f $junglePath -o $outputPath -y $keyPath -d $Device
 }
 
@@ -68,10 +68,10 @@ if ($Run) {
         New-Item -ItemType Directory -Path $tempDir | Out-Null
     }
 
-    $tempPrg = Join-Path $tempDir "GarmiGotchi.prg"
+    $tempPrg = Join-Path $tempDir "Tamawatchi.prg"
     Copy-Item $outputPath $tempPrg -Force
 
-    Write-Host "Running Garmi-gotchi watch-app on $Device in simulator..." -ForegroundColor Cyan
+    Write-Host "Running Tamawatchi watch-app on $Device in simulator..." -ForegroundColor Cyan
     if ($WaitForRun) {
         & $monkeydo $tempPrg $Device
     } else {

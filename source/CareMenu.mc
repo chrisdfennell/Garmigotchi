@@ -14,9 +14,9 @@ function buildCareMenu() as WatchUi.Menu2 {
 }
 
 class CareMenuDelegate extends WatchUi.Menu2InputDelegate {
-    var mainView as TamagotchiView;
+    var mainView as TamawatchiView;
 
-    function initialize(view as TamagotchiView) {
+    function initialize(view as TamawatchiView) {
         Menu2InputDelegate.initialize();
         mainView = view;
     }

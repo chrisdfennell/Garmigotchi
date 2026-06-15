@@ -1,4 +1,4 @@
-<!-- Thanks for contributing to Garmigotchi! -->
+<!-- Thanks for contributing to Tamawatchi! -->
 
 ## Description
 

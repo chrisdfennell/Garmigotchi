@@ -2,7 +2,7 @@
 
 ## Our pledge
 
-We want Garmigotchi to be a friendly, welcoming, and harassment-free project for
+We want Tamawatchi to be a friendly, welcoming, and harassment-free project for
 everyone, regardless of experience level or background. We pledge to interact in
 ways that keep this community open, respectful, and kind.
 

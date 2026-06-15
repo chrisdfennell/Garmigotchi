@@ -5,7 +5,7 @@ import Toybox.System;
 import Toybox.Time;
 import Toybox.WatchUi;
 
-class TamagotchiApp extends Application.AppBase {
+class TamawatchiApp extends Application.AppBase {
     var pet;
 
     function initialize() {
@@ -13,7 +13,7 @@ class TamagotchiApp extends Application.AppBase {
     }
 
     function onStart(state) as Void {
-        System.println("Garmi-gotchi onStart");
+        System.println("Tamawatchi onStart");
         pet = StorageManager.hasPet() ? StorageManager.loadPet() : new Pet();
         applyCustomName(pet);
         pet.updateFromClock();
@@ -43,7 +43,7 @@ class TamagotchiApp extends Application.AppBase {
     }
 
     function onStop(state) as Void {
-        System.println("Garmi-gotchi onStop");
+        System.println("Tamawatchi onStop");
         if (pet != null) {
             pet.updateFromClock();
             StorageManager.savePet(pet);
@@ -52,12 +52,12 @@ class TamagotchiApp extends Application.AppBase {
     }
 
     function getInitialView() {
-        System.println("Garmi-gotchi getInitialView");
+        System.println("Tamawatchi getInitialView");
         if (pet == null) {
             pet = StorageManager.hasPet() ? StorageManager.loadPet() : new Pet();
         }
-        var view = new TamagotchiView(pet);
-        return [ view, new TamagotchiInputDelegate(view, pet) ];
+        var view = new TamawatchiView(pet);
+        return [ view, new TamawatchiInputDelegate(view, pet) ];
     }
 
     // The glance is the always-one-swipe-away ambient surface: it advances the
@@ -70,7 +70,7 @@ class TamagotchiApp extends Application.AppBase {
         pet.updateFromClock();
         StorageManager.savePet(pet);
         PetComplication.publish(pet);
-        return [ new TamagotchiGlanceView(pet) ];
+        return [ new TamawatchiGlanceView(pet) ];
     }
 
     function maybeNotify() as Void {
@@ -89,6 +89,6 @@ class TamagotchiApp extends Application.AppBase {
     }
 }
 
-function getApp() as TamagotchiApp {
-    return Application.getApp() as TamagotchiApp;
+function getApp() as TamawatchiApp {
+    return Application.getApp() as TamawatchiApp;
 }

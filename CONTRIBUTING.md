@@ -1,6 +1,6 @@
-# Contributing to Garmigotchi
+# Contributing to Tamawatchi
 
-Thanks for your interest in improving Garmigotchi! 🐾 This guide covers how to get
+Thanks for your interest in improving Tamawatchi! 🐾 This guide covers how to get
 set up, build, and submit changes.
 
 ## Prerequisites
@@ -30,14 +30,14 @@ set up, build, and submit changes.
 Or with the raw compiler:
 
 ```powershell
-monkeyc -f monkey.jungle -o bin/Garmigotchi.prg -y developer_key.der -d fenix7
+monkeyc -f monkey.jungle -o bin/Tamawatchi.prg -y developer_key.der -d fenix7
 ```
 
 ## Project layout
 
 See the **Project Structure** section of the [README](README.md). In short:
 
-- `source/` — all Monkey C code (`Pet.mc` is the model; `TamagotchiView.mc` is the UI)
+- `source/` — all Monkey C code (`Pet.mc` is the model; `TamawatchiView.mc` is the UI)
 - `resources/` — sprites, strings, layouts, and the complication definition
 - `tools/` — Python art generators and `savescreenshot.ps1`
 - `assets/` — generated art packs and screenshots
@@ -62,7 +62,7 @@ See the **Project Structure** section of the [README](README.md). In short:
    `FILES` map in `tools/copy_ciq_resources.py`, then run both scripts.
 2. Bind the new bitmaps in `resources/drawables/drawables.xml`.
 3. Add a `PET_*` constant and sprite/food mapping in `source/Pet.mc` /
-   `source/TamagotchiView.mc`.
+   `source/TamawatchiView.mc`.
 
 ## Reporting bugs & ideas
 

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Garmigotchi are documented here.
+All notable changes to Tamawatchi are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -76,9 +76,9 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
   including time spent asleep, with persistent state across launches.
 - Touch routing: Care opens only from the button; tapping elsewhere opens Stats.
 
-[Unreleased]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.2.1...HEAD
-[1.2.1]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.2.0...v1.2.1
-[1.2.0]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.1.0...v1.2.0
-[1.1.0]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.1...v1.1.0
-[1.0.1]: https://github.com/chrisdfennell/Garmigotchi/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/chrisdfennell/Garmigotchi/releases/tag/v1.0.0
+[Unreleased]: https://github.com/chrisdfennell/Tamawatchi/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/chrisdfennell/Tamawatchi/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/chrisdfennell/Tamawatchi/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/chrisdfennell/Tamawatchi/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/chrisdfennell/Tamawatchi/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/chrisdfennell/Tamawatchi/releases/tag/v1.0.0

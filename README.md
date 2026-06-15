@@ -1,4 +1,4 @@
-<h1 align="center">🐾 Garmigotchi</h1>
+<h1 align="center">🐾 Tamawatchi</h1>
 
 <p align="center">
   <b>A Tamagotchi-style virtual pet that lives on your Garmin watch.</b><br>
@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/screen_active5.png" width="240" alt="Garmigotchi pet with a live activity panel on a Garmin watch">
+  <img src="assets/screen_active5.png" width="240" alt="Tamawatchi pet with a live activity panel on a Garmin watch">
 </p>
 
 <p align="center">
@@ -108,9 +108,9 @@ Every care action plays a little hand-drawn flourish — a burger/fish eaten bit
 
 ### Or with the raw compiler
 ```powershell
-monkeyc -f monkey.jungle -o bin/Garmigotchi.prg -y developer_key.der -d fenix7
+monkeyc -f monkey.jungle -o bin/Tamawatchi.prg -y developer_key.der -d fenix7
 connectiq
-monkeydo bin/Garmigotchi.prg fenix7
+monkeydo bin/Tamawatchi.prg fenix7
 ```
 
 **Supported devices:** `fr255`, `fr265`, `fr955`, `fr965`, `venu2`, `venu3`, `fenix7`, `fenix7pro`, `epix2`, and the **fenix 8 family** — `fenix843mm`, `fenix847mm`, `fenix8pro47mm`, `fenix8solar47mm`, `fenix8solar51mm` (these also cover the matching **tactix 8 / quatix 8** models). Both AMOLED and **MIP** (transflective) screens are supported, from 218×218 up to 454×454.
@@ -131,9 +131,9 @@ manifest.xml                  Connect IQ manifest (app id, permissions, products
 monkey.jungle                 Build configuration
 build.ps1                     Build / run / export helper
 source/
-  TamagotchiApp.mc            App lifecycle + complication publishing
-  TamagotchiView.mc           Main UI: pet page, stats page, animations, input
-  TamagotchiGlanceView.mc     Glance (carousel) summary
+  TamawatchiApp.mc            App lifecycle + complication publishing
+  TamawatchiView.mc           Main UI: pet page, stats page, animations, input
+  TamawatchiGlanceView.mc     Glance (carousel) summary
   Pet.mc                      Stats, stages, moods, sleep, poop, aging, legacy
   CareMenu.mc                 The Care action menu
   PlayGame.mc                 Play mini-games (catch / reaction / masher) + launcher
